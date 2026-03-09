@@ -1,0 +1,6 @@
+package p285z2;
+
+/* JADX INFO: loaded from: classes.dex */
+public interface oO00OOOo {
+    void OooO00o();
+}

@@ -1,0 +1,21 @@
+package p285z2;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import p285z2.oo00oO;
+
+/* JADX INFO: renamed from: z2.m2 */
+/* JADX INFO: loaded from: classes.dex */
+public class C4120m2<T> implements oo00oO.OooO0O0<T> {
+    private final int[] OoooOoO;
+
+    public C4120m2(int i, int i2) {
+        this.OoooOoO = new int[]{i, i2};
+    }
+
+    @Override // z2.oo00oO.OooO0O0
+    @Nullable
+    public int[] OooO00o(@NonNull T t, int i, int i2) {
+        return this.OoooOoO;
+    }
+}

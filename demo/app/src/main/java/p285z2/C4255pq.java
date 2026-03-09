@@ -1,0 +1,68 @@
+package p285z2;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.ResultMetadataType;
+import java.util.EnumMap;
+import java.util.Map;
+
+/* JADX INFO: renamed from: z2.pq */
+/* JADX INFO: loaded from: classes2.dex */
+public final class C4255pq {
+    private final int[] OooO00o = new int[4];
+    private final StringBuilder OooO0O0 = new StringBuilder();
+
+    private int OooO00o(C3735bo c3735bo, int[] iArr, StringBuilder sb) throws NotFoundException {
+        int[] iArr2 = this.OooO00o;
+        iArr2[0] = 0;
+        iArr2[1] = 0;
+        iArr2[2] = 0;
+        iArr2[3] = 0;
+        int iOooOOO0 = c3735bo.OooOOO0();
+        int iOooOO0o = iArr[1];
+        int i = 0;
+        for (int i2 = 0; i2 < 2 && iOooOO0o < iOooOOO0; i2++) {
+            int iOooOO0 = AbstractC4366sq.OooOO0(c3735bo, iArr2, iOooOO0o, AbstractC4366sq.OooOO0);
+            sb.append((char) ((iOooOO0 % 10) + 48));
+            for (int i3 : iArr2) {
+                iOooOO0o += i3;
+            }
+            if (iOooOO0 >= 10) {
+                i |= 1 << (1 - i2);
+            }
+            if (i2 != 1) {
+                iOooOO0o = c3735bo.OooOO0o(c3735bo.OooOO0O(iOooOO0o));
+            }
+        }
+        if (sb.length() != 2) {
+            throw NotFoundException.getNotFoundInstance();
+        }
+        if (Integer.parseInt(sb.toString()) % 4 == i) {
+            return iOooOO0o;
+        }
+        throw NotFoundException.getNotFoundInstance();
+    }
+
+    private static Map<ResultMetadataType, Object> OooO0OO(String str) {
+        if (str.length() != 2) {
+            return null;
+        }
+        EnumMap enumMap = new EnumMap(ResultMetadataType.class);
+        enumMap.put(ResultMetadataType.ISSUE_NUMBER, Integer.valueOf(str));
+        return enumMap;
+    }
+
+    public final C3770cm OooO0O0(int i, C3735bo c3735bo, int[] iArr) throws NotFoundException {
+        StringBuilder sb = this.OooO0O0;
+        sb.setLength(0);
+        int iOooO00o = OooO00o(c3735bo, iArr, sb);
+        String string = sb.toString();
+        Map<ResultMetadataType, Object> mapOooO0OO = OooO0OO(string);
+        float f = i;
+        C3770cm c3770cm = new C3770cm(string, null, new C3807dm[]{new C3807dm((iArr[0] + iArr[1]) / 2.0f, f), new C3807dm(iOooO00o, f)}, BarcodeFormat.UPC_EAN_EXTENSION);
+        if (mapOooO0OO != null) {
+            c3770cm.OooO(mapOooO0OO);
+        }
+        return c3770cm;
+    }
+}

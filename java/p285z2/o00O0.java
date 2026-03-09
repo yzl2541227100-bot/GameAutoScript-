@@ -1,0 +1,5 @@
+package p285z2;
+
+/* JADX INFO: loaded from: classes.dex */
+public final /* synthetic */ class o00O0 {
+}

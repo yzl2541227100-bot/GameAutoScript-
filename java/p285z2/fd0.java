@@ -1,0 +1,40 @@
+package p285z2;
+
+import androidx.annotation.IntRange;
+import androidx.annotation.Nullable;
+
+/* JADX INFO: loaded from: classes2.dex */
+public class fd0 {
+    public char OooO00o;
+    public boolean OooO0O0;
+
+    public fd0() {
+        OooO00o();
+    }
+
+    private void OooO00o() {
+        this.OooO00o = (char) 1;
+        this.OooO0O0 = false;
+    }
+
+    public void OooO0O0(@Nullable fd0 fd0Var) {
+        if (fd0Var == null) {
+            OooO00o();
+        } else {
+            this.OooO0O0 = fd0Var.OooO0O0;
+            this.OooO00o = fd0Var.OooO00o;
+        }
+    }
+
+    public void OooO0OO(boolean z) {
+        this.OooO0O0 = z;
+    }
+
+    public void OooO0Oo(@IntRange(from = 1, m1to = b00.OooOOoo) int i) {
+        if (i < 1 || i > 65535) {
+            this.OooO00o = (char) 1;
+        } else {
+            this.OooO00o = (char) i;
+        }
+    }
+}

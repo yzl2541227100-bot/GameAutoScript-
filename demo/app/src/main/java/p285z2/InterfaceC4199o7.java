@@ -1,0 +1,6 @@
+package p285z2;
+
+/* JADX INFO: renamed from: z2.o7 */
+/* JADX INFO: loaded from: classes.dex */
+public interface InterfaceC4199o7 {
+}

@@ -1,0 +1,96 @@
+package com.anythink.expressad.atsignalcommon.windvane;
+
+import android.text.TextUtils;
+import android.webkit.WebView;
+
+/* JADX INFO: renamed from: com.anythink.expressad.atsignalcommon.windvane.g */
+/* JADX INFO: loaded from: classes.dex */
+public final class C1466g implements InterfaceC1461b {
+
+    /* JADX INFO: renamed from: a */
+    private static C1466g f6766a = new C1466g();
+
+    private C1466g() {
+    }
+
+    /* JADX INFO: renamed from: a */
+    private static C1466g m5688a() {
+        return f6766a;
+    }
+
+    /* JADX INFO: renamed from: a */
+    private static void m5689a(WebView webView, String str, String str2) {
+        String str3 = TextUtils.isEmpty(str2) ? String.format("javascript:window.MvBridge.fireEvent('%s', '');", str) : String.format("javascript:window.MvBridge.fireEvent('%s','%s');", str, C1473n.m5710c(str2));
+        if (webView != null) {
+            try {
+                webView.loadUrl(str3);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } catch (Throwable th) {
+                th.printStackTrace();
+            }
+        }
+    }
+
+    @Override // com.anythink.expressad.atsignalcommon.windvane.InterfaceC1461b
+    /* JADX INFO: renamed from: a */
+    public final void mo5673a(Object obj, String str) {
+        if (obj instanceof C1460a) {
+            C1460a c1460a = (C1460a) obj;
+            String str2 = TextUtils.isEmpty(str) ? String.format("javascript:window.OW.onSuccess(%s,'');", c1460a.f6763g) : String.format("javascript:window.OW.onSuccess(%s,'%s');", c1460a.f6763g, C1473n.m5710c(str));
+            WindVaneWebView windVaneWebView = c1460a.f6757a;
+            if (windVaneWebView != null) {
+                try {
+                    windVaneWebView.loadUrl(str2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } catch (Throwable th) {
+                    th.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Override // com.anythink.expressad.atsignalcommon.windvane.InterfaceC1461b
+    /* JADX INFO: renamed from: a */
+    public final void mo5674a(Object obj, String str, String str2) {
+        if (obj instanceof C1460a) {
+            C1460a c1460a = (C1460a) obj;
+            String str3 = TextUtils.isEmpty(str2) ? String.format("javascript:window.MvBridge.fireEvent('%s', '');", str) : String.format("javascript:window.MvBridge.fireEvent('%s','%s');", str, C1473n.m5710c(str2));
+            WindVaneWebView windVaneWebView = c1460a.f6757a;
+            if (windVaneWebView != null) {
+                try {
+                    windVaneWebView.loadUrl(str3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } catch (Throwable th) {
+                    th.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Override // com.anythink.expressad.atsignalcommon.windvane.InterfaceC1461b
+    /* JADX INFO: renamed from: b */
+    public final void mo5675b(Object obj, String str) {
+        if (obj instanceof C1460a) {
+            C1460a c1460a = (C1460a) obj;
+            if (TextUtils.isEmpty(str)) {
+                String.format("javascript:window.MvBridge.onFailure(%s,'');", c1460a.f6763g);
+            } else {
+                str = C1473n.m5710c(str);
+            }
+            String str2 = String.format("javascript:window.MvBridge.onFailure(%s,'%s');", c1460a.f6763g, str);
+            WindVaneWebView windVaneWebView = c1460a.f6757a;
+            if (windVaneWebView != null) {
+                try {
+                    windVaneWebView.loadUrl(str2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } catch (Throwable th) {
+                    th.printStackTrace();
+                }
+            }
+        }
+    }
+}

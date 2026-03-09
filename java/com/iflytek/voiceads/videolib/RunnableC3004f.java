@@ -1,0 +1,20 @@
+package com.iflytek.voiceads.videolib;
+
+/* JADX INFO: renamed from: com.iflytek.voiceads.videolib.f */
+/* JADX INFO: loaded from: assets/AdDex.4.0.1.dex */
+class RunnableC3004f implements Runnable {
+
+    /* JADX INFO: renamed from: a */
+    final /* synthetic */ C3002d f16558a;
+
+    RunnableC3004f(C3002d c3002d) {
+        this.f16558a = c3002d;
+    }
+
+    @Override // java.lang.Runnable
+    public void run() {
+        if (C3013o.m13684c() != null) {
+            C3013o.m13684c().mo13630t();
+        }
+    }
+}
