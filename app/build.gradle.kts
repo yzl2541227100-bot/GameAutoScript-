@@ -15,10 +15,6 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86")
-        }
     }
 
     buildTypes {
@@ -40,13 +36,6 @@ android {
     buildFeatures {
         compose = true
     }
-    // 支持 JNI
-    externalNativeBuild {
-        cmake {
-            path = file("src/main/cpp/CMakeLists.txt")
-            version = "3.22.1"
-        }
-    }
 }
 
 dependencies {
@@ -65,22 +54,16 @@ dependencies {
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
-    // CameraX for screen capture support
-    implementation("androidx.camera:camera-core:1.4.1")
-
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // Gson for script config parsing
+    // Gson for config parsing
     implementation("com.google.code.gson:gson:2.10.1")
 
-    // ZXing for QR code scanning
-    implementation("com.google.zxing:core:3.5.3")
-
-    // ML Kit Text Recognition (bundled, 离线中文OCR)
+    // ML Kit Text Recognition (离线中文OCR)
     implementation("com.google.mlkit:text-recognition-chinese:16.0.1")
 
-    // OpenCV Android SDK (模板匹配用于按钮/图标定位)
+    // OpenCV Android SDK (模板匹配)
     implementation("org.opencv:opencv:4.10.0")
 
     testImplementation(libs.junit)

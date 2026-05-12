@@ -1,6 +1,0 @@
-package p285z2;
-
-/* JADX INFO: loaded from: classes2.dex */
-public interface a40<F, F_OUT> {
-    F_OUT OooO00o(F f);
-}

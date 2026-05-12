@@ -12,6 +12,7 @@ import android.media.Image
 import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
+import android.os.Build
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Log
@@ -100,6 +101,11 @@ class ScreenShoterV3 private constructor() {
 
     /** 启动截图 */
     private fun startCapture() {
+        // 如果已经在捕获中，不要重新创建
+        if (isCapturing && virtualDisplay != null && imageReader != null) {
+            updateScreenSize()
+            return
+        }
         releaseCapture() // 只释放 display/reader，保留 projection
         updateScreenSize()
 
@@ -116,6 +122,16 @@ class ScreenShoterV3 private constructor() {
 
         handlerThread = HandlerThread("imageReaderHandler").also { it.start() }
         handler = Handler(handlerThread!!.looper)
+
+        // Android 14+ 要求先注册 callback 才能 createVirtualDisplay
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            projection?.registerCallback(object : MediaProjection.Callback() {
+                override fun onStop() {
+                    Log.d(TAG, "MediaProjection stopped via callback")
+                    // 不在这里释放资源，避免提前销毁
+                }
+            }, handler)
+        }
 
         imageReader = ImageReader.newInstance(screenWidth, screenHeight, android.graphics.PixelFormat.RGBA_8888, 3)
         virtualDisplay = projection?.createVirtualDisplay(

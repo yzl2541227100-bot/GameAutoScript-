@@ -13,3 +13,10 @@ local.properties
 *.aab
 *.hprof
 *.log
+
+# 不相关的项目/反编译代码
+/java/
+/demo/
+/couple-miniapp/
+/debug_output/
+/xposed-module/
