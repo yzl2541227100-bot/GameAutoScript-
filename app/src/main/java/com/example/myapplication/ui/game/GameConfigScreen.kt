@@ -3,7 +3,6 @@ package com.example.myapplication.ui.game
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
@@ -22,8 +21,6 @@ import com.example.myapplication.ui.game.tabs.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GameConfigScreen(
-    onBack: () -> Unit,
-    onStartFloating: () -> Unit,
     onRunScript: () -> Unit,
     onActivateCode: () -> Unit,
     onNavigateSettings: () -> Unit
@@ -56,11 +53,6 @@ fun GameConfigScreen(
                 title = {
                     Text("游戏脚本配置", fontWeight = FontWeight.Bold)
                 },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "返回")
-                    }
-                },
                 actions = {
                     IconButton(onClick = { /* 消息 */ }) {
                         Icon(Icons.Filled.ChatBubbleOutline, "消息")
@@ -72,14 +64,12 @@ fun GameConfigScreen(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
                     actionIconContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
         },
         bottomBar = {
             GameBottomBar(
-                onStartFloating = onStartFloating,
                 onRunScript = onRunScript,
                 onActivateCode = onActivateCode
             )
@@ -188,7 +178,6 @@ private fun SubTabRow(selected: Int, onSelect: (Int) -> Unit) {
 
 @Composable
 private fun GameBottomBar(
-    onStartFloating: () -> Unit,
     onRunScript: () -> Unit,
     onActivateCode: () -> Unit
 ) {
@@ -200,23 +189,9 @@ private fun GameBottomBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 8.dp),
+                .padding(horizontal = 12.dp, vertical = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // 启动浮窗
-            Button(
-                onClick = onStartFloating,
-                modifier = Modifier
-                    .weight(1f)
-                    .height(46.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                ),
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text("启动浮窗", fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-            }
-
             // 运行脚本
             Button(
                 onClick = onRunScript,
